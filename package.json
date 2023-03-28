@@ -1,0 +1,16 @@
+{
+  "name": "dorasflights",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:styles": "parcel watch ./assets/css/app.css --no-hmr --dist-dir ./public/assets --no-cache",
+    "build:js": "parcel watch ./assets/js/app.js --no-hmr --dist-dir ./public/assets --no-cache",
+    "build:watch": "npm run build:styles & npm run build:js"
+  },
+  "author": "Maria",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.8.3"
+  }
+}

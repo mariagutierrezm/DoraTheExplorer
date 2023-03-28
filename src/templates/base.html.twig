@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <title>Dora's Flights</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
+    <link rel="stylesheet" href="app.bundle.css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google" content="notranslate">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  </head>
+
+  <body>
+
+    <div class="position-relative min-vh-100 footer-padding-large">
+      <h5 class="container mt-4 mb-3">Dora The Explorer Flights</h5>
+      
+      <main class="content" id="main">
+        {% block content %}
+        {% endblock %}
+      </main>
+
+    </div>
+
+    <script src="/assets/app.bundle.js"></script>
+
+  </body>
+
+</html>

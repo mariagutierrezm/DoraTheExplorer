@@ -1,6 +1,6 @@
 <?php
 
-namespace Flights\App\Routes;
+namespace Flights\Routes;
 
 /**
  * Search Routes
@@ -26,6 +26,7 @@ class SearchRoutes
 
     public function routes()
     {
-        $this->app->get('/search', 'SearchController:test');
+        $this->app->get('/search', 'SearchController:displaySearchForm');
+        $this->app->get('/searchs', 'SearchController:searchFlights');
     }
 }

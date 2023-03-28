@@ -1,6 +1,6 @@
 <?php
 
-namespace Flights\App\Settings;
+namespace Flights\Settings;
 
 class Settings
 {

@@ -8,7 +8,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Flights\\App\\": "src"
+            "Flights\\": "src"
         }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^6.2"
     }
 }

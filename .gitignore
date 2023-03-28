@@ -1,1 +1,6 @@
 vendor/*
+env.php
+node_modules
+public/assets/*
+.parcel-cache
+.DS_Store

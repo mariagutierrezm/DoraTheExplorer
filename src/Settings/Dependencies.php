@@ -1,11 +1,11 @@
 <?php
 
-namespace Flights\App\Settings;
+namespace Flights\Settings;
 
 use Slim\App;
 use Slim\Container;
-use \Flights\App\Settings\Settings;
-use \Flights\App\Controller\SearchController;
+use \Flights\Settings\Settings;
+use \Flights\Controller\SearchController;
 
 class Dependencies
 {
