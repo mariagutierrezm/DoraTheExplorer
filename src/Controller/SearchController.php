@@ -5,6 +5,7 @@ namespace Flights\Controller;
 use Slim\Container;
 use \Flights\Library\FlightsClient;
 use \Flights\Library\AmadeusAdaptor;
+use \Flights\Library\ValidateFlightsRequest;
 use \Flights\Library\FlightDataFactory;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
@@ -15,6 +16,7 @@ class SearchController
     private AmadeusAdaptor $amadeusAdaptor;
     private FlightsClient $flightsClient;
     private FlightDataFactory $flightDataFactory;
+    private ValidateFlightsRequest $validateFlightsRequest;
     
     public function __construct(Container $container)
     {
@@ -22,6 +24,7 @@ class SearchController
       $this->amadeusAdaptor = new AmadeusAdaptor();
       $this->flightsClient = new FlightsClient();
       $this->flightDataFactory = new FlightDataFactory();
+      $this->validateFlightsRequest = new ValidateFlightsRequest();
     }
 
     /**
@@ -46,8 +49,10 @@ class SearchController
       try {
         $data = $request->getQueryParams();
         
-        $result = $this->flightsClient->searchFlightsCURL($data);
+        $this->validateFlightsRequest->validateRequestData(($data));
 
+        $result = $this->flightsClient->searchFlightsCURL($data);
+        
         return $response->withStatus(200)->withJson($result);
 
       } catch (\Exception $e) {
@@ -56,7 +61,7 @@ class SearchController
             ->withHeader('Content-type', "application/json")
             ->withJson([
                 'success' => 0,
-                'message' => 'There was an error processing the request.'
+                'message' => 'There was an error processing the request.' . $e->getMessage()
             ]);
       }
     }
@@ -67,7 +72,9 @@ class SearchController
     {
     try {
         $bodyData = $request->getParsedBody();
-        
+
+        $this->validateFlightsRequest->validateRequestData($bodyData, true);
+
         $data = $this->flightDataFactory->createFlightDataFromArray($bodyData);
         
         $result = $this->amadeusAdaptor->searchFlightsSDK($data);
@@ -80,7 +87,7 @@ class SearchController
             ->withHeader('Content-type', "application/json")
             ->withJson([
                 'success' => 0,
-                'message' => 'There was an error processing the request.'
+                'message' => 'There was an error processing the request.' . $e->getMessage()
             ]);
     }
   }
