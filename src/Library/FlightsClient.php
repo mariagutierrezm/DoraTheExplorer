@@ -5,8 +5,10 @@ namespace Flights\Library;
 
 class FlightsClient
 {
-
-    public function searchFlightsCURL($data)
+    /**
+     * It makes a GET curl request to the amadeus API to request flight offers
+     */
+    public function searchFlightsCURL(array $data): ?array
     {
         $token = $this->getToken();
         
@@ -42,8 +44,11 @@ class FlightsClient
 
         return json_decode($resp, true);
     }
-
-    public function getToken()
+    /**
+     * It makes a POST curl request to the amadeus API to request the access token
+     * to be use as a bearer token in future requests
+     */
+    public function getToken(): ?array
     {
         $data = [
             'grant_type' => 'client_credentials',
@@ -72,4 +77,5 @@ class FlightsClient
         curl_close($ch);
         return json_decode($resp,true);
     }
+
 }

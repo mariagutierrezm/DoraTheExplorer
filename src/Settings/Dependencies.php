@@ -4,7 +4,6 @@ namespace Flights\Settings;
 
 use Slim\App;
 use Slim\Container;
-use \Flights\Settings\Settings;
 use \Flights\Controller\SearchController;
 
 class Dependencies
