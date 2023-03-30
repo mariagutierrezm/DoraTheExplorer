@@ -27,6 +27,7 @@ class SearchRoutes
     public function routes()
     {
         $this->app->get('/search', 'SearchController:displaySearchForm');
-        $this->app->get('/searchs', 'SearchController:searchFlights');
+        $this->app->get('/search-flight', 'SearchController:searchFlights');
+        $this->app->post('/search-flight', 'SearchController:searchFlightsAmadeus');
     }
 }
